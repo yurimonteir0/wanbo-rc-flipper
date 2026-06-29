@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.0
+v1.0:
 
 * Initial public release
 * Added infrared remote control for Wanbo DaVinci 1 projector
