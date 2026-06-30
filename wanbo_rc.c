@@ -32,9 +32,9 @@ typedef struct {
 static const WanboButton wanbo_buttons[BUTTON_COUNT] = {
     {"Power", WanboCommandPower, false, false, &I_power_20x21, &I_power_hover_20x21},
     {"Mouse", WanboCommandMouse, false, false, &I_mouse_20x21, &I_mouse_hover_20x21},
-    {"Options", WanboCommandMenu, false, false, &I_options_20x21, &I_options_hover_20x21},
+    {"Options", WanboCommandSettings, false, false, &I_options_20x21, &I_options_hover_20x21},
 
-    {"Setup", WanboCommandSettings, false, false, &I_setup_20x21, &I_setup_hover_20x21},
+    {"Setup", WanboCommandMenu, false, false, &I_setup_20x21, &I_setup_hover_20x21},
     {"DPad", WanboCommandOk, true, false, &I_dpad_20x21, &I_dpad_hover_20x21},
     {"Mute", WanboCommandMute, false, false, &I_mute_20x21, &I_mute_hover_20x21},
 
@@ -200,19 +200,19 @@ static void wanbo_rc_handle_dpad_input(WanboRcApp* app, InputEvent* event) {
     if(event->type == InputTypePress || event->type == InputTypeRepeat) {
         switch(event->key) {
         case InputKeyLeft:
-            wanbo_rc_send_with_feedback(WanboCommandUp);
-            break;
-
-        case InputKeyRight:
-            wanbo_rc_send_with_feedback(WanboCommandDown);
-            break;
-
-        case InputKeyDown:
             wanbo_rc_send_with_feedback(WanboCommandLeft);
             break;
 
-        case InputKeyUp:
+        case InputKeyRight:
             wanbo_rc_send_with_feedback(WanboCommandRight);
+            break;
+
+        case InputKeyDown:
+            wanbo_rc_send_with_feedback(WanboCommandDown);
+            break;
+
+        case InputKeyUp:
+            wanbo_rc_send_with_feedback(WanboCommandUp);
             break;
 
         case InputKeyOk:
